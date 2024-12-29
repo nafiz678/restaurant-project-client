@@ -10,8 +10,8 @@ const Navbar = () => {
 
     </>
     return (
-        <div className="navbar">
-            <div className="navbar-start">
+        <div className="navbar fixed z-10 bg-black/30 ">
+            <div className="navbar-start text-white">
                 <div className="dropdown">
                     <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
                         <svg
@@ -38,13 +38,16 @@ const Navbar = () => {
                     <p className="tracking-[0.7rem]">RESTAURANT</p>
                 </a>
             </div>
-            <div className="navbar-center hidden lg:flex">
+            <div className="navbar-center hidden text-white lg:flex">
                 <ul className="menu  bg-none menu-horizontal px-1">
                 {navLinks}
                 </ul>
             </div>
             <div className="navbar-end">
+                <button className="btn">click me </button>
+                {/* <div  className="top-4 right-4 fixed">
                 <ModeToggle></ModeToggle>
+                </div> */}
             </div>
         </div>
     );

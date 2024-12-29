@@ -6,10 +6,10 @@ import { Outlet } from 'react-router-dom';
 const MainLayout = () => {
     return (
         <div className=''>
-            <nav className='max-w-screen-xl mx-auto'>
+            <nav className=''>
                 <Navbar></Navbar>
             </nav>
-            <div className='max-w-screen-xl mx-auto h-screen'>
+            <div className=''>
                 <Outlet></Outlet>
             </div>
 
