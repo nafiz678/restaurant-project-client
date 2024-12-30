@@ -1,12 +1,13 @@
+import { Link } from "react-router-dom";
 import { ModeToggle } from "../dark-toggle";
 
 
 const Navbar = () => {
     const navLinks = <>
 
-        <li><a>Item 1</a></li>
-        <li><a>Item no 4</a></li>
-        <li><a>Item 3</a></li>
+        <li><Link to={"/"}>Home</Link></li>
+        <li><Link to={"/menu"}>Our menu</Link></li>
+        <li><Link to={"/menu"}>Item 1</Link></li>
 
     </>
     return (

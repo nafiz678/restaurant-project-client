@@ -1,30 +1,20 @@
 import SectionTitle from '@/components/SectionTitle';
 import MenuItemCard from '@/components/shared/MenuItemCard';
-import React, { useEffect, useState } from 'react';
+import useMenu from '@/hooks/useMenu';
 
 const PopularMenu = () => {
-    const [menu, setMenu] = useState()
-    const [loading, setLoading] = useState(true)
+    const [menu] = useMenu()
+    console.log(menu)
 
-    useEffect(() => {
-        fetch("menu.json")
-            .then(res => res.json())
-            .then(data => {
-                const popularItems = data.filter(item => item.category === "popular")
-                setMenu(popularItems)
-                setLoading(false)
-            })
-    }, [])
-    if (!loading) {
-        console.log(menu)
-    }
+    const popular = menu.filter(item=> item.category === "popular" )
+    console.log(popular)
 
     return (
         <section>
             <SectionTitle heading={"---From our menu---"} subHeading={"POPULAR ITEMS"}></SectionTitle>
             <div className='grid grid-cols-2 gap-10 items-center justify-between w-8/12 mx-auto'>
                 {
-                    menu?.map(item => <MenuItemCard key={item._id} item={item}></MenuItemCard>)
+                    popular?.map(item => <MenuItemCard key={item._id} item={item}></MenuItemCard>)
                 }
             </div>
             <div className='flex items-center justify-center mt-4'>
