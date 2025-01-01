@@ -1,21 +1,29 @@
 import Navbar from '@/components/shared/Navbar';
 import Footer from '@/components/shared/Footer';
 import React from 'react';
-import { Outlet } from 'react-router-dom';
+import { Outlet, useLocation } from 'react-router-dom';
+import { Toaster } from 'react-hot-toast';
 
 const MainLayout = () => {
+    const { pathname } = useLocation()
+
+    const isLogin = pathname.includes("login") || pathname.includes("signup")
     return (
         <div className=''>
-            <nav className=''>
+            <div><Toaster/></div>
+            {isLogin || <nav className=''>
                 <Navbar></Navbar>
-            </nav>
+            </nav>}
             <div className=''>
                 <Outlet></Outlet>
             </div>
 
-            <footer >
-                <Footer></Footer>
-            </footer>
+            {
+                isLogin ||
+                <footer >
+                    <Footer></Footer>
+                </footer>
+            }
         </div>
     );
 };

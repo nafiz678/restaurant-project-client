@@ -32,24 +32,24 @@ const Menu = () => {
 
             {/* dessert section */}
             <div className="my-16">
-                <MenuCategory items={desserts} title={"Desserts"} menuBg={dessertBg} subTitle={"Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."}></MenuCategory>
+                <MenuCategory items={desserts} title={"dessert"} menuBg={dessertBg} subTitle={"Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."}></MenuCategory>
             </div>
 
 
             {/* pizza section */}
             <div className="my-16">
-                <MenuCategory items={pizza} title={"Pizzas"} menuBg={pizzaBg} subTitle={"Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."}></MenuCategory>
+                <MenuCategory items={pizza} title={"pizza"} menuBg={pizzaBg} subTitle={"Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."}></MenuCategory>
             </div>
 
 
             {/* salad section */}
             <div className="my-16">
-                <MenuCategory items={salad} title={"Salads"} menuBg={saladBg} subTitle={"Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."}></MenuCategory>
+                <MenuCategory items={salad} title={"salad"} menuBg={saladBg} subTitle={"Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."}></MenuCategory>
             </div>
 
             {/* soup section */}
             <div className="my-16">
-                <MenuCategory items={soup} title={"Soup"} menuBg={soupBg} subTitle={"Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."}></MenuCategory>
+                <MenuCategory items={soup} title={"soup"} menuBg={soupBg} subTitle={"Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."}></MenuCategory>
             </div>
 
         </div>

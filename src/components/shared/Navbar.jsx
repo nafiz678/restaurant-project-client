@@ -1,15 +1,27 @@
 import { Link } from "react-router-dom";
 import { ModeToggle } from "../dark-toggle";
+import { useContext } from "react";
+import { AuthContext } from "@/provider/AuthProvider";
 
 
 const Navbar = () => {
+    const { user, logOut } = useContext(AuthContext)
     const navLinks = <>
 
         <li><Link to={"/"}>Home</Link></li>
         <li><Link to={"/menu"}>Our menu</Link></li>
-        <li><Link to={"/menu"}>Item 1</Link></li>
-
+        <li><Link to={"/order/salad"}>Order Food</Link></li>
     </>
+
+    const handleLogout = () =>{
+        logOut()
+        .then(res=>{
+            console.log(res.user)
+        })
+        .catch(err=>{
+            console.log(err)
+        })
+    }
     return (
         <div className="navbar fixed z-10 bg-black/30 ">
             <div className="navbar-start text-white">
@@ -31,8 +43,8 @@ const Navbar = () => {
                     <ul
                         tabIndex={0}
                         className="menu menu-sm dropdown-content rounded-box z-[1] mt-3 w-52 p-2 shadow">
-                            {navLinks}
-                        </ul>
+                        {navLinks}
+                    </ul>
                 </div>
                 <a href="/" className="flex-col flex justify-center items-center">
                     <p className="text-2xl uppercase tracking-[0.4rem]">Bistro boss</p>
@@ -41,11 +53,24 @@ const Navbar = () => {
             </div>
             <div className="navbar-center hidden text-white lg:flex">
                 <ul className="menu  bg-none menu-horizontal px-1">
-                {navLinks}
+                    {navLinks}
                 </ul>
             </div>
             <div className="navbar-end">
-                <button className="btn">click me </button>
+                <button className="mr-20 text-white ">
+                    {
+                        user
+                            ?
+                            <>
+                                <Link onClick={handleLogout}>Logout</Link>
+                            </>
+                            :
+                            <>
+                                <Link to={"/login"}>Login</Link>
+                            </>
+                    }
+                </button>
+
                 {/* <div  className="top-4 right-4 fixed">
                 <ModeToggle></ModeToggle>
                 </div> */}

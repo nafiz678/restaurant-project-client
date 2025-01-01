@@ -1,5 +1,6 @@
 import Cover from "@/components/shared/Cover";
 import MenuItemCard from "@/components/shared/MenuItemCard";
+import { Link } from "react-router-dom";
 
 
 const MenuCategory = ({ items, title, subTitle, menuBg }) => {
@@ -12,7 +13,9 @@ const MenuCategory = ({ items, title, subTitle, menuBg }) => {
                 }
             </div>
             <div className='flex items-center justify-center mt-4'>
-                <button className="btn btn-outline border-0 border-b-4 text-black   hover:border-0">View full menu</button>
+                <Link to={`/order/${title || "offered"}`}>
+                    <button className="btn btn-outline border-0 border-b-4 text-black   hover:border-0">View full menu</button>
+                </Link>
             </div>
         </div>
     );

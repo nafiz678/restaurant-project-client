@@ -7,6 +7,7 @@ const Cover = ({ bgImage, title, subTitle }) => {
             bgImage={bgImage}
             bgImageAlt="the dog"
             strength={-200}
+            className='object-cover'
         >
             <div
                 className="hero min-h-[80vh]"
