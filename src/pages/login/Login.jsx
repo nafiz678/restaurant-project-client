@@ -3,7 +3,7 @@ import toast from "react-hot-toast";
 import { loadCaptchaEnginge, LoadCanvasTemplate, LoadCanvasTemplateNoReload, validateCaptcha } from 'react-simple-captcha';
 import loginBg from "@/assets/others/authentication2.png"
 import { AuthContext } from "@/provider/AuthProvider";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 
 
@@ -11,9 +11,12 @@ import { Helmet } from "react-helmet-async";
 
 
 const Login = () => {
-    const [error, setError] = useState("")
     const { signin, setUser } = useContext(AuthContext)
+    const location = useLocation()
+    const navigate = useNavigate()
 
+    const form2 = location?.state?.from || "/"
+    console.log(location.state.from)
 
     useEffect(() => {
         loadCaptchaEnginge(6);
@@ -29,21 +32,21 @@ const Login = () => {
         const captcha = form.captcha.value
 
         if (validateCaptcha(captcha) === true) {
-            setError("Captcha verified")
-            toast.success(error)
-            
+
             signin(email, password)
             .then(res=>{
                 console.log(res.user)
                 setUser(res.user)
+                toast.success("Login successful")
+                navigate(form2, { replace: true} )
             })
             .catch(err=>{
                 console.log(err.message)
+                toast.error(err.message)
             })
 
         } else {
-            setError("Captcha didn't matched")
-            toast.error(error)
+            toast.error("Captcha didn't matched")
         }
         
 

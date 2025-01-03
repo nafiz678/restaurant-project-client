@@ -2,6 +2,8 @@ import { Link } from "react-router-dom";
 import { ModeToggle } from "../dark-toggle";
 import { useContext } from "react";
 import { AuthContext } from "@/provider/AuthProvider";
+import { FaShoppingCart } from "react-icons/fa";
+
 
 
 const Navbar = () => {
@@ -11,16 +13,17 @@ const Navbar = () => {
         <li><Link to={"/"}>Home</Link></li>
         <li><Link to={"/menu"}>Our menu</Link></li>
         <li><Link to={"/order/salad"}>Order Food</Link></li>
+
     </>
 
-    const handleLogout = () =>{
+    const handleLogout = () => {
         logOut()
-        .then(res=>{
-            console.log(res.user)
-        })
-        .catch(err=>{
-            console.log(err)
-        })
+            .then(res => {
+                console.log(res.user)
+            })
+            .catch(err => {
+                console.log(err)
+            })
     }
     return (
         <div className="navbar fixed z-10 bg-black/30 ">
@@ -57,19 +60,28 @@ const Navbar = () => {
                 </ul>
             </div>
             <div className="navbar-end">
-                <button className="mr-20 text-white ">
+                <div className="mr-20 text-white ">
                     {
                         user
                             ?
-                            <>
-                                <Link onClick={handleLogout}>Logout</Link>
-                            </>
+                            <div className="flex items-center justify-center gap-4">
+                                <span className="mr-2">{user.displayName}</span>
+                                <button onClick={handleLogout}>Logout</button>
+                                <div>
+                                    <Link to={"/"}>
+                                        <button className=" relative flex justify-center items-center">
+                                            <FaShoppingCart className="mr-2 text-xl"></FaShoppingCart>
+                                            <span className="bg-white absolute -top-2 -right-1 text-black rounded-full w-4 flex items-center justify-center h-4 p-1">0</span>
+                                        </button>
+                                    </Link>
+                                </div>
+                            </div>
                             :
                             <>
                                 <Link to={"/login"}>Login</Link>
                             </>
                     }
-                </button>
+                </div>
 
                 {/* <div  className="top-4 right-4 fixed">
                 <ModeToggle></ModeToggle>
