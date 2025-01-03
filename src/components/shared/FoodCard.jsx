@@ -1,18 +1,38 @@
 import useAuth from "@/hooks/useAuth";
+import useAxiosSecure from "@/hooks/useAxiosSecure";
+import useCart from "@/hooks/useCart";
 import toast from "react-hot-toast";
-import { FaIcons } from "react-icons/fa";
 import { useLocation, useNavigate } from "react-router-dom";
 
 const FoodCard = ({ item }) => {
     const { user } = useAuth()
     const navigate = useNavigate()
     const location = useLocation()
+    const axiosSecure = useAxiosSecure()
+    const [, refetch] = useCart()
 
     const { image, price, recipe, name } = item
 
-    const handleAddToCart = (food) => {
+    const handleAddToCart = async () => {
         if (user && user.email) {
-            // todo: send cart item to the database
+            // send cart item to the database
+            const cartItem = {
+                menuId : item._id,
+                email: user.email,
+                name, image, price
+            }
+
+            axiosSecure.post("/carts" , cartItem)
+            .then(res=>{
+                console.log(res.data)
+                if(res.data.acknowledged)
+                {
+                    toast.success("Item Added successfully")
+                }
+            });
+            // refetch the cart to update the items count
+            refetch()
+
         } else {
             toast(
                 (t) => (
@@ -55,7 +75,7 @@ const FoodCard = ({ item }) => {
                     {recipe}
                 </p>
                 <button
-                    onClick={() => handleAddToCart(item)}
+                    onClick={handleAddToCart}
                     className="mt-4 px-4 py-2 w-full bg-gray-100 text-[#BB8506] text-sm font-semibold rounded hover:bg-[#111827]
                     border-b-4 border-yellow-500 transition-all duration-150 ease-in active:scale-95"
                 >

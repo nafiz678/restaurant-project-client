@@ -1,3 +1,4 @@
+import Dashboard from "@/layouts/Dashboard";
 import MainLayout from "@/layouts/MainLayout";
 import Home from "@/pages/home/Home";
 import Login from "@/pages/login/Login";
@@ -36,6 +37,15 @@ const router = createBrowserRouter([
             },
         ]
     },
+    {
+        path: "/dashboard",
+        element: <Dashboard></Dashboard>,
+        children: [
+            {
+                path: "/cart"
+            }
+        ]
+    }
 ]);
 
 export default router

@@ -3,11 +3,16 @@ import { ModeToggle } from "../dark-toggle";
 import { useContext } from "react";
 import { AuthContext } from "@/provider/AuthProvider";
 import { FaShoppingCart } from "react-icons/fa";
+import useCart from "@/hooks/useCart";
 
 
 
 const Navbar = () => {
     const { user, logOut } = useContext(AuthContext)
+
+    const [cart] = useCart()
+
+
     const navLinks = <>
 
         <li><Link to={"/"}>Home</Link></li>
@@ -71,7 +76,7 @@ const Navbar = () => {
                                     <Link to={"/"}>
                                         <button className=" relative flex justify-center items-center">
                                             <FaShoppingCart className="mr-2 text-xl"></FaShoppingCart>
-                                            <span className="bg-white absolute -top-2 -right-1 text-black rounded-full w-4 flex items-center justify-center h-4 p-1">0</span>
+                                            <span className="bg-white absolute -top-2 -right-1 text-black rounded-full w-4 flex items-center justify-center h-4 p-1">{cart.length}</span>
                                         </button>
                                     </Link>
                                 </div>
