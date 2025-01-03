@@ -73,7 +73,7 @@ const Navbar = () => {
                                 <span className="mr-2">{user.displayName}</span>
                                 <button onClick={handleLogout}>Logout</button>
                                 <div>
-                                    <Link to={"/"}>
+                                    <Link to={"/dashboard/cart"}>
                                         <button className=" relative flex justify-center items-center">
                                             <FaShoppingCart className="mr-2 text-xl"></FaShoppingCart>
                                             <span className="bg-white absolute -top-2 -right-1 text-black rounded-full w-4 flex items-center justify-center h-4 p-1">{cart.length}</span>

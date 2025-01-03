@@ -1,5 +1,6 @@
 import Dashboard from "@/layouts/Dashboard";
 import MainLayout from "@/layouts/MainLayout";
+import Cart from "@/pages/dashboard/Cart";
 import Home from "@/pages/home/Home";
 import Login from "@/pages/login/Login";
 // import LoginShadCn from "@/pages/login/LoginShadCn";
@@ -42,7 +43,8 @@ const router = createBrowserRouter([
         element: <Dashboard></Dashboard>,
         children: [
             {
-                path: "/cart"
+                path: "cart",
+                element: <Cart></Cart>,
             }
         ]
     }

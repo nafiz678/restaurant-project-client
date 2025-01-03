@@ -36,6 +36,7 @@
     "react-tabs": "^6.1.0",
     "shadcn": "^2.1.8",
     "sort-by": "^1.2.0",
+    "sweetalert2": "^11.15.9",
     "swiper": "^11.1.15",
     "tailwind-merge": "^2.6.0",
     "tailwind-variants": "^0.3.0",

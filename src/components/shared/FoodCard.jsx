@@ -48,7 +48,7 @@ const FoodCard = ({ item }) => {
                                 }}>Login</button>
                             <button
                                 className='bg-green-500 text-white text-sm font-medium px-3 py-1 rounded-full hover:bg-green-600'
-                                onClick={() => toast.dismiss()}>Cancel</button>
+                                onClick={() => toast.dismiss(t.id)}>Cancel</button>
                         </div>
                     </div>
                 ));
