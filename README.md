@@ -21,7 +21,7 @@ Bistro Boss is a full-stack web application designed to:
 ### Backend:
 - **Node.js** and **Express.js**: Backend framework for API creation.
 - **MongoDB**: NoSQL database for data storage.
-- **Node js**: For database interaction.
+- **Express js**: For database interaction.
 
 ### Others:
 - **Axios**: For HTTP requests.
@@ -69,6 +69,7 @@ Follow these steps to run the project on your local machine:
 1. **Clone the Repository**:
    ```bash
    git clone https://github.com/nafiz678/restaurant-project-client.git
+   cd restaurant-project
 
 
 ## Install Dependencies:
