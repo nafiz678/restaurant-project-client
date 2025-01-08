@@ -1,6 +1,9 @@
 import { createContext, useEffect, useState } from "react";
-import { createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signOut, updateProfile } from "firebase/auth"
+import { createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from "firebase/auth"
 import { app } from "@/firebase/firebase.init";
+import { GoogleAuthProvider } from "firebase/auth";
+import useAxiosPublic from "@/hooks/useAxiosPublic";
+
 
 
 
@@ -10,7 +13,14 @@ const auth = getAuth(app)
 const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null)
     const [loading, setLoading] = useState(true)
+    const axiosPublic = useAxiosPublic()
 
+    const provider = new GoogleAuthProvider();
+
+    const googleSignIn = () =>{
+        setLoading(true)
+        return signInWithPopup(auth, provider)
+    }
 
     const signin = (email, password)=>{
         setLoading(true)
@@ -34,22 +44,40 @@ const AuthProvider = ({ children }) => {
     useEffect(()=>{
        const unsubscribe =  onAuthStateChanged(auth, currentUser=>{
             setUser(currentUser)
-            console.log("Current User=>" , currentUser)
-            setLoading(false)
+            if(currentUser)
+            {
+                const userInfo = {email: currentUser.email, }
+                // get token and store client
+                axiosPublic.post("/jwt", userInfo)
+                .then(res=>{
+                    if(res.data.token)
+                    {
+                        localStorage.setItem("access-token", res.data.token)
+                        setLoading(false)
+                    }
+                })
+
+            }else{
+                //todo: clear cookie by calling logout api(if token stored in client side)
+                localStorage.removeItem("access-token")
+                setLoading(false)
+            }
         })
 
         return ()=>{
             return unsubscribe();
         }
-    },[])
+    },[axiosPublic])
 
     const authInfo = {
         user,
+        loading,
         createUser,
         signin,
         logOut,
         updateUser,
-        setUser
+        setUser,
+        googleSignIn,
     }
 
     return (

@@ -5,15 +5,17 @@ import loginBg from "@/assets/others/authentication2.png"
 import { AuthContext } from "@/provider/AuthProvider";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
+import useAxiosPublic from "@/hooks/useAxiosPublic";
 
 
 
 
 
 const Login = () => {
-    const { signin, setUser } = useContext(AuthContext)
+    const { signin, setUser, googleSignIn } = useContext(AuthContext)
     const location = useLocation()
     const navigate = useNavigate()
+    const axiosPublic = useAxiosPublic()
 
     const form2 = location?.state?.from || "/"
     // console.log(location.state.from)
@@ -49,10 +51,28 @@ const Login = () => {
             toast.error("Captcha didn't matched")
         }
         
-
-
-
     }
+
+    const handleGoogle = () => {
+        googleSignIn()
+            .then(res => {
+                console.log(res.user)
+                const userInfo = {email: res.user?.email, name: res.user?.displayName}
+                axiosPublic.post("/users", userInfo)
+                .then(result=>{
+                    console.log(result)
+                    navigate("/")
+                })
+
+                // reset()
+                // navigate("/")
+                // toast.success("User created successfully")
+            })
+            .catch(err => {
+                console.log(err)
+            })
+    }
+
 
 
 
@@ -141,20 +161,20 @@ const Login = () => {
                     </p>
 
                     {/* google or github Sign-in */}
-                    {/* <div className="mt-6">
+                    <div className="mt-6">
             <p className="text-center text-sm text-gray-600">Or sign in with</p>
             <div className="flex justify-center gap-4 mt-2">
-              <button className="p-2 bg-gray-200 rounded-full hover:bg-gray-300">
+              {/* <button className="p-2 bg-gray-200 rounded-full hover:bg-gray-300">
                 <i className="fab fa-facebook-f"></i> 
+              </button> */}
+              <button onClick={handleGoogle} className="p-2 bg-gray-200 btn rounded-full hover:bg-gray-300">
+                Google
               </button>
-              <button className="p-2 bg-gray-200 rounded-full hover:bg-gray-300">
-                <i className="fab fa-google"></i> 
-              </button>
-              <button className="p-2 bg-gray-200 rounded-full hover:bg-gray-300">
+              {/* <button className="p-2 bg-gray-200 rounded-full hover:bg-gray-300">
                 <i className="fab fa-github"></i> 
-              </button>
+              </button> */}
             </div>
-          </div> */}
+          </div>
 
 
                 </div>

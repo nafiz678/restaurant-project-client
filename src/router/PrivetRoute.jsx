@@ -1,14 +1,16 @@
+import Loader from '@/components/shared/Loader';
 import { AuthContext } from '@/provider/AuthProvider';
-import React, { useContext } from 'react';
+import { useContext } from 'react';
 import { Navigate, useLocation } from 'react-router-dom';
 
 
-const PrivetRoute = ({children}) => {
+const PrivateRoute = ({children}) => {
     const {user, loading} = useContext(AuthContext)
     const location = useLocation();
 
-    if(loading) return <Loader></Loader>
-
+    if(loading) {
+        return <Loader></Loader>
+    }
     if(user){
         return children
     }
@@ -19,4 +21,4 @@ const PrivetRoute = ({children}) => {
     );
 };
 
-export default PrivetRoute;
+export default PrivateRoute;

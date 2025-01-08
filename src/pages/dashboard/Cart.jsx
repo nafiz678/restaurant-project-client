@@ -1,7 +1,6 @@
 import SectionTitle from "@/components/SectionTitle";
 import useAxiosSecure from "@/hooks/useAxiosSecure";
 import useCart from "@/hooks/useCart";
-import toast from "react-hot-toast";
 import { FaTrashAlt } from "react-icons/fa";
 import Swal from "sweetalert2";
 
@@ -46,7 +45,7 @@ const Cart = () => {
 
     return (
         <div className="">
-            <SectionTitle heading={"MANAGE ALL USERS"} subHeading={"---How many??---"}></SectionTitle>
+            <SectionTitle heading={"MANAGE ALL ITEMS"} subHeading={"---Hurry Up!---"}></SectionTitle>
             <section className="mx-36 my-24">
                 <nav className=" flex items-center justify-between">
                     <h1 className="text-4xl ">Total Users: {cart.length}</h1>

@@ -1,3 +1,4 @@
+import useAxiosPublic from "@/hooks/useAxiosPublic";
 import { AuthContext } from "@/provider/AuthProvider";
 import React, { useContext } from "react";
 import { Helmet } from "react-helmet-async";
@@ -7,49 +8,73 @@ import { Link, useNavigate } from "react-router-dom";
 // import loginBg from "@/assets/login-illustration.png"; 
 
 const RegisterPage = () => {
-    const {createUser, updateUser} = useContext(AuthContext);
+    const axiosPublic = useAxiosPublic()
+    const { createUser, updateUser, googleSignIn } = useContext(AuthContext);
     const navigate = useNavigate()
     const {
         register,
         reset,
         handleSubmit,
         formState: { errors },
-        } = useForm()
+    } = useForm()
 
     const onSubmit = (data) => {
         console.log(data)
         createUser(data.email, data.password)
-        .then(res=> {
-            const loggedUser = res.user
-            console.log(loggedUser)
-            const info = {displayName : data.name , photoURL : data.photo}
-            updateUser(info)
-            .then((data)=>{
-                reset()
-                navigate("/")
-                toast.success("User created successfully")
+            .then(res => {
+                const loggedUser = res.user
+                console.log(loggedUser)
+                const info = { displayName: data.name, photoURL: data.photo }
+                updateUser(info)
+                // crete user entry in the database
+                const userInfo = { name: data.name, email: data.email, }
+
+                axiosPublic.post("/users", userInfo)
+                    .then(res => {
+                        if (res.data.insertedId) {
+                            reset()
+                            navigate("/")
+                            toast.success("User Added to the database")
+                        }
+                    })
+
+
+                    .then((data) => {
+                        reset()
+                        navigate("/")
+                        toast.success("User created successfully")
+                    })
+                    .catch(err => {
+                        console.log(err.message)
+                    })
             })
-            .catch(err=>{
-                console.log(err.message)
+            .catch(err => {
+                console.log(err)
             })
-        })
-        .catch(err=>{
-            console.log(err)
-        })
     }
 
 
+    const handleGoogle = () => {
+        googleSignIn()
+            .then(res => {
+                console.log(res.user)
+                const userInfo = {email: res.user?.email, name: res.user?.displayName}
+                axiosPublic.post("/users", userInfo)
+                .then(result=>{
+                    console.log(result)
+                    navigate("/")
+                })
 
-    //   const handleSubmit = (e) => {
-    //     e.preventDefault();
+                // reset()
+                // navigate("/")
+                // toast.success("User created successfully")
+            })
+            .catch(err => {
+                console.log(err)
+            })
+    }
 
-    //     const form = e.target
 
-    //     const name = form.name.value
-    //     const email = form.email.value
-    //     const password = form.password.value
-    //     const photo = form.photo.value
-    //   };
 
     return (
         <div className="min-h-screen flex items-center justify-center bg-gray-100">
@@ -143,6 +168,7 @@ const RegisterPage = () => {
                             Login here
                         </Link>
                     </p>
+                    <button onClick={handleGoogle} className="btn">Google</button>
                 </div>
             </div>
         </div>

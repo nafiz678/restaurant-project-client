@@ -65,27 +65,28 @@ const Navbar = () => {
                 </ul>
             </div>
             <div className="navbar-end">
-                <div className="mr-20 text-white ">
+                <div className="mr-20 text-white flex items-center justify-center gap-6">
                     {
                         user
                             ?
                             <div className="flex items-center justify-center gap-4">
                                 <span className="mr-2">{user.displayName}</span>
                                 <button onClick={handleLogout}>Logout</button>
-                                <div>
-                                    <Link to={"/dashboard/cart"}>
-                                        <button className=" relative flex justify-center items-center">
-                                            <FaShoppingCart className="mr-2 text-xl"></FaShoppingCart>
-                                            <span className="bg-white absolute -top-2 -right-1 text-black rounded-full w-4 flex items-center justify-center h-4 p-1">{cart.length}</span>
-                                        </button>
-                                    </Link>
-                                </div>
+
                             </div>
                             :
                             <>
                                 <Link to={"/login"}>Login</Link>
                             </>
                     }
+                    <div>
+                        <Link to={"/dashboard/cart"}>
+                            <button className=" relative flex justify-center items-center">
+                                <FaShoppingCart className="mr-2 text-xl"></FaShoppingCart>
+                                <span className="bg-white absolute -top-2 -right-1 text-black rounded-full w-4 flex items-center justify-center h-4 p-1">{cart.length}</span>
+                            </button>
+                        </Link>
+                    </div>
                 </div>
 
                 {/* <div  className="top-4 right-4 fixed">
