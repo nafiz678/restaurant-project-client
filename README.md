@@ -66,21 +66,43 @@ To see the full list of dependencies, check the [package.json](./package.json) f
 ## 🚀 How to Run Locally
 Follow these steps to run the project on your local machine:
 
-1. **Clone the Repository**:
-   ```bash
-   git clone https://github.com/nafiz678/restaurant-project-client.git
-   cd restaurant-project
+1. **Clone the Repository**:  
+   ```bash  
+   git clone [https://github.com/nafiz678/crowdfunding-website.git  ](https://github.com/nafiz678/restaurant-project-client.git)
+   cd crowdfunding-website
 
 
-## Install Dependencies:
+2. Install Dependencies:
+- Frontend
+    ```bash
+    cd client
+    npm install
 
-# Installation:
-   ```bash
-    Backend:
-   cd server
-   npm install
+- Backend
+    ```bash
+    cd server
+    npm install
 
-   FrontEnd:
-   cd client
-   npm install
-   npm run dev
+
+3. Set Up Environment Variables:
+    ```bash
+    env
+    Copy code
+    # Server  
+    MONGO_URI=your_mongodb_connection_string
+    # Client  
+    VITE_FIREBASE_API_KEY=your_firebase_api_key
+
+4. Run the Development Servers:
+- Start the backend:
+    ```bash
+    cd server
+    node index.js
+
+- Start the frontend:
+    ```bash
+    cd server
+    npm run dev
+
+5. Access the Application: </br>
+Open your browser and navigate to http://localhost:5000.
