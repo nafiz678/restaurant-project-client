@@ -67,15 +67,14 @@ Follow these steps to run the project on your local machine:
 ## Install Dependencies:
 
 # Installation:
- **Backend**:
    ```bash
+    Backend:
    cd server
    npm install
 
  ---
 
- **FrontEnd**:
-   ```bash
+   FrontEnd:
    cd client
    npm install
    npm run dev
