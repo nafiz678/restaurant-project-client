@@ -68,8 +68,8 @@ Follow these steps to run the project on your local machine:
 
 1. **Clone the Repository**:  
    ```bash  
-   git clone [https://github.com/nafiz678/crowdfunding-website.git  ](https://github.com/nafiz678/restaurant-project-client.git)
-   cd crowdfunding-website
+   git clone https://github.com/nafiz678/restaurant-project-client.git 
+   cd restaurant-project-client
 
 
 2. Install Dependencies:
