@@ -72,8 +72,6 @@ Follow these steps to run the project on your local machine:
    cd server
    npm install
 
- ---
-
    FrontEnd:
    cd client
    npm install
