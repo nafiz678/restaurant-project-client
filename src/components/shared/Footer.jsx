@@ -1,9 +1,9 @@
-import React from 'react';
+
 
 const Footer = () => {
     return (
         <>
-            <footer className="footer bg-gray-50 dark:bg-[#2E2C2C] p-10">
+            <footer className="footer bg-gray-50 p-10">
                 <aside>
                     <svg
                         width="50"
@@ -62,7 +62,7 @@ const Footer = () => {
                 </nav>
 
             </footer>
-            <footer className="footer footer-center bg-gray-50 dark:bg-[#2E2C2C] p-4">
+            <footer className="footer footer-center bg-gray-50  p-4">
                 <aside>
                     <p>Copyright © {new Date().getFullYear()} - All right reserved by ACME Industries Ltd</p>
                 </aside>
