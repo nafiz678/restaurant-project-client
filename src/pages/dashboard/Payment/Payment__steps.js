@@ -10,3 +10,5 @@
  * 8. display transaction id 
  * 
  */
+
+// src main = https://docs.stripe.com/payments/quickstart?lang=node&client=react

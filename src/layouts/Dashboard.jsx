@@ -35,11 +35,13 @@ const Dashboard = () => {
 
                                 <li className='text-xl'><NavLink to={"/dashboard/reservation"}> <FaCalendar></FaCalendar> Reservation</NavLink></li>
 
+                                <li className='text-xl'><NavLink to={"/dashboard/history"}> <FaList></FaList> Payment History</NavLink></li>
+
                                 <li className='text-xl'><NavLink to={"/dashboard/cart"}> <FaShoppingCart></FaShoppingCart>My cart ({cart.length})</NavLink></li>
 
                                 <li className='text-xl'><NavLink to={"/dashboard/review"}> <FaAddressCard></FaAddressCard>Add a Review</NavLink></li>
 
-                                <li className='text-xl'><NavLink to={"/dashboard/bookings"}> <FaList></FaList>My bookings</NavLink></li>
+                                <li className='text-xl'><NavLink to={"/dashboard/paymentHistory"}> <FaList></FaList>Payment History</NavLink></li>
                             </>
                     }
 
