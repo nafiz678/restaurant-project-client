@@ -13,6 +13,7 @@ import AddItems from "@/pages/dashboard/AddItems";
 import AdminRoute from "./AdminRoute";
 import ManageItems from "@/pages/dashboard/ManageItems";
 import UpdateItem from "@/pages/dashboard/UpdateItem";
+import Payment from "@/pages/dashboard/Payment/Payment";
 
 
 
@@ -50,6 +51,10 @@ const router = createBrowserRouter([
             {
                 path: "cart",
                 element: <Cart></Cart>,
+            },
+            {
+                path: "payment",
+                element: <Payment></Payment>,
             },
 
             // admin routes

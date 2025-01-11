@@ -27,6 +27,7 @@ const Dashboard = () => {
                                 <li className='text-xl'><NavLink to={"/dashboard/bookings"}> <FaBook></FaBook>Manage bookings</NavLink></li>
 
                                 <li className='text-xl'><NavLink to={"/dashboard/users"}> <FaUsers></FaUsers>All Users</NavLink></li>
+                                <li className='text-xl'><NavLink to={"/dashboard/cart"}> <FaShoppingCart></FaShoppingCart>My cart ({cart.length})</NavLink></li>
                             </>
                             :
                             <>

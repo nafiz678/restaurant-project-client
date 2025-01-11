@@ -107,7 +107,7 @@ const UpdateItem = () => {
                                     <label className="label">
                                         <span className="label-text">Recipe Details</span>
                                     </label>
-                                    <textarea contentEditable  defaultValue={recipe} {...register('recipe')} className="textarea textarea-bordered h-24" placeholder="Bio"></textarea>
+                                    <textarea defaultValue={recipe} {...register('recipe')} className="textarea textarea-bordered h-24" placeholder="Bio"></textarea>
                                 </div>
             
                                 <div className="form-control w-full my-6">

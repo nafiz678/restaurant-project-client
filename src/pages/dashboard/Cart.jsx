@@ -2,6 +2,7 @@ import SectionTitle from "@/components/SectionTitle";
 import useAxiosSecure from "@/hooks/useAxiosSecure";
 import useCart from "@/hooks/useCart";
 import { FaTrashAlt } from "react-icons/fa";
+import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 
 
@@ -50,7 +51,9 @@ const Cart = () => {
                 <nav className=" flex items-center justify-between">
                     <h1 className="text-4xl ">Total Users: {cart.length}</h1>
                     <h1 className="text-4xl ">Total Price: {totalPrice}$</h1>
-                    <button className="btn btn-primary">Pay</button>
+                    <button disabled={!cart.length} >
+                        <Link className="btn btn-primary" to={"/dashboard/payment"}>Pay</Link>
+                    </button>
                 </nav>
 
                 <div className="overflow-x-auto">
